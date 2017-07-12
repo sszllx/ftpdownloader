@@ -8,19 +8,21 @@ echo $ioslog
 
 ncftpget -u ftpuser -p fa322Agwug ftp://123.59.134.139/ioslogs/$ioslog
 
-cat $ioslog | awk '{print $1"\t"$2"\t"$3}' > immediate.id
+awk -F"\t" '$3~/3/{print $1"\t"$2"\t"$3}' $ioslog > immediate.id
 
-linenum=$(wc -l immediate.id | awk '{print $1}' | xargs -i echo '{}/5' | bc)
+linenum=$(wc -l immediate.id | awk '{print $1}' | xargs -i echo '{}/6' | bc)
 split -l $linenum immediate.id
 
 
-cat xaf >> xae
-rm xaf
-mv xaa $destdir/1
-mv xab $destdir/2
-mv xac $destdir/3
-mv xad $destdir/4
-mv xae $destdir/5
+mkdir $destdir
+cat xag >> xaf
+mv xaa $destdir/1.id
+mv xab $destdir/2.id
+mv xac $destdir/3.id
+mv xad $destdir/4.id
+mv xae $destdir/5.id
+mv xaf $destdir/6.id
+rm xag
 
 md5val=$(md5sum immediate.id | awk '{print $1}')
 echo $md5val
