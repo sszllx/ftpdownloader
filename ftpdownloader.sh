@@ -36,12 +36,12 @@ mv $ioslog $bak_dir
 
 echo $md5val > $destdir/md5
 
-./expect_scp 60.205.177.230 root hilijing $destdir/1.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/2.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/3.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/4.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/5.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/6.id /var/www/html/ioslogs/
-./expect_scp 60.205.177.230 root hilijing $destdir/md5 /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/1.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/2.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/3.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/4.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/5.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/6.id /var/www/html/ioslogs/
+./auto_scp 60.205.177.230 root hilijing $destdir/md5 /var/www/html/ioslogs/
 
 echo "finish"
