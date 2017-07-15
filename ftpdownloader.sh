@@ -1,6 +1,6 @@
 #!/bin/bash
 
-destdir=./ioslogs
+destdir=/var/www/html/ioslogs
 ioslog=$(ncftpls -u ftpuser -p fa322Agwug ftp://123.59.134.139/ioslogs | sort | grep -v bak | tail -n 1)
 ioslog=$(echo | awk '{split("'${ioslog}'", array, "/");print array[2]}')
 
@@ -8,7 +8,8 @@ echo $ioslog
 
 ncftpget -u ftpuser -p fa322Agwug ftp://123.59.134.139/ioslogs/$ioslog
 
-awk -F"\t" '$3~/3/{print $1"\t"$2"\t"$3}' $ioslog > immediate.id
+awk -F"\t" '$3~/3/{print $1"\t"$2"\t"$3}' $ioslog > immediate_1.id
+awk '!i[$1]++' immediate_1.id > immediate.id
 
 linenum=$(wc -l immediate.id | awk '{print $1}' | xargs -i echo '{}/6' | bc)
 split -l $linenum immediate.id
